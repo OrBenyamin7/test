@@ -21,6 +21,7 @@ const fetchFilteredGraphData = async (
           headers: {
             Accept: "application/json",
             Link: '<http://context/ngsi-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"',
+            "X-Requested-With": "XMLHttpRequest", // Add this header
             "fiware-service": "openiot",
             "fiware-servicepath": "/",
           },
@@ -48,6 +49,7 @@ const fetchDevices = async (io, currentUseCaseValue) => {
           headers: {
             Accept: "application/json",
             Link: '<http://context/ngsi-context.jsonld>; rel="http://www.w3.org/ns/json-ld#context"; type="application/ld+json"',
+            "X-Requested-With": "XMLHttpRequest", // Add this header
             "fiware-service": "openiot",
             "fiware-servicepath": "/",
           },
