@@ -6,18 +6,16 @@ const cors = require("cors");
 const corsAnywhere = require("cors-anywhere");
 
 const app = express();
-
-// You no longer need to manually create the HTTP server here
-// Express will handle it and use the `PORT` environment variable
 const server = http.createServer(app);
 
 const { formatDate } = require('./Utils/formatDate');
 const { fetchFilteredGraphData, fetchDevices, calculateAndEmitSpeed } = require('./DataHandlers/dataHandlers');
 
+
 // Configure socket.io with CORS
 const io = socketIo(server, {
   cors: {
-    origin: "https://test-1-yiye.onrender.com", // Update this based on where your frontend is hosted
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
     credentials: true,
     allowedHeaders: [
@@ -33,7 +31,7 @@ const io = socketIo(server, {
 // Enable CORS for all origins on Express
 app.use(
   cors({
-    origin: "https://test-1-yiye.onrender.com", // Update based on your client URL
+    origin: "http://localhost:3000",
     methods: ["GET", "POST"],
     credentials: true,
     allowedHeaders: [
@@ -63,6 +61,12 @@ let refreshInterval = 100;
 let fetchDevicesInterval = null;
 let speedCalculationInterval = null;
 
+// import requests
+// url = 'http://172.16.101.172:8668/v2/entities/urn:ngsi-ld:AirQualitySensor:GMW87:001?fromDate=2023-10-01T00:00:00.000Z&toDate=2025-12-31T23:59:59.999Z'
+// headers = {'fiware-service': 'openiot', 'fiware-servicepath': '/'}
+// r = requests.get(url, headers=headers)
+// print(r.json())
+
 fetchDevices(io);
 fetchDevicesInterval = setInterval(() => {
   fetchDevices(io, currentUseCaseValue);
@@ -70,6 +74,7 @@ fetchDevicesInterval = setInterval(() => {
 speedCalculationInterval = setInterval(() => {
   calculateAndEmitSpeed(io); // Pass io to the function
 }, refreshInterval);
+
 
 io.on("connection", (socket) => {
   console.log("New client connected");
@@ -181,7 +186,7 @@ io.on("connection", (socket) => {
   });
 });
 
-// Use the environment variable for the port or default to 5000
+// Start the server
 const PORT = process.env.PORT || 5000;
 server.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
