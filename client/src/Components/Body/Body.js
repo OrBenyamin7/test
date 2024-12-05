@@ -12,7 +12,7 @@ import DeviceCompareScreen from "./DeviceCompare.js";
 import Config from "./Config.js";
 
 // Initialize the WebSocket connection (replace with your server URL)
-const socket = io("https://test-3wa3.onrender.com/");
+const socket = io("https://test-3wa3.onrender.com");
 
 const Body = () => {
   const [devices, setDevices] = useState([]);
