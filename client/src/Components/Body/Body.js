@@ -12,7 +12,7 @@ import DeviceCompareScreen from "./DeviceCompare.js";
 import Config from "./Config.js";
 
 // Initialize the WebSocket connection (replace with your server URL)
-const socket = io("'http://98.66.138.91:3000'");
+const socket = io("'http://98.66.138.91:300'");
 
 const Body = () => {
   const [devices, setDevices] = useState([]);
