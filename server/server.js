@@ -15,7 +15,7 @@ const { fetchFilteredGraphData, fetchDevices, calculateAndEmitSpeed } = require(
 // Configure socket.io with CORS
 const io = socketIo(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://test-1-yiye.onrender.com",
     methods: ["GET", "POST"],
     credentials: true,
     allowedHeaders: [
@@ -31,7 +31,7 @@ const io = socketIo(server, {
 // Enable CORS for all origins on Express
 app.use(
   cors({
-    origin: "http://localhost:3000",
+    origin: "https://test-1-yiye.onrender.com",
     methods: ["GET", "POST"],
     credentials: true,
     allowedHeaders: [
