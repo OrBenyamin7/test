@@ -16,7 +16,7 @@ const fetchFilteredGraphData = async (
       console.log("Fetching data from API:", API_URL);
   
       const response = await axios.get(
-        `http://98.66.138.91:300/cors-anywhere/${API_URL}`,
+        `http://98.66.138.91:3000/cors-anywhere/${API_URL}`,
         {
           headers: {
             Accept: "application/json",
@@ -44,7 +44,7 @@ const fetchDevices = async (io, currentUseCaseValue) => {
       const API_URL =
         "http://172.16.101.172:1026/ngsi-ld/v1/entities/?local=true";
       const response = await axios.get(
-        `http://98.66.138.91:300/cors-anywhere/${API_URL}`,
+        `http://98.66.138.91:3000/cors-anywhere/${API_URL}`,
         {
           headers: {
             Accept: "application/json",
